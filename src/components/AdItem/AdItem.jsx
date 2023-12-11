@@ -1,83 +1,79 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import BasicModal from 'components/Modal/Modal';
 import {
   Button,
   CarContainer,
   CarTags,
   CarTagsList,
-  FavoriteButton,
-  FavoriteIcon,
+  StyledFavoriteCheck,
+  StyledFavoriteIcon,
   Image,
   Span,
   StyledLi,
+  FavoriteButton,
 } from './AdItem.styled';
-import icons from "../../images/icons.svg";
+import icons from '../../images/icons.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFavorites } from '../../redux/selectors';
+import { addFavorite, removeFavorite } from '../../redux/favoriteSlice';
 
-const AdItem = ({ advert }) => {
-  const {
-    img,
-    make: brand,
-    model,
-    year,
-    rentalPrice,
-    address,
-    rentalCompany,
-    type,
-    id,
-    accessories,
-  } = advert;
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const modalRoot = document.getElementById('modal');
+const AdItem = ({ data }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleModalOpen = () => {
-    setIsModalOpen(!isModalOpen);
+  const dispatch = useDispatch();
+
+  const cars = useSelector(selectFavorites);
+  const isChecked = cars.some(({ id }) => id === data.id);
+
+  const handleToggleFavorite = () => {
+    if (isChecked) {
+      dispatch(removeFavorite(data));
+    } else {
+      dispatch(addFavorite(data));
+    }
   };
 
   return (
     <StyledLi>
-      <FavoriteButton type="submit">
-        <FavoriteIcon width={18} height={18}>
-        <use href={icons + "#heart"} />
-        </FavoriteIcon>
-      </FavoriteButton>
-      <Image src={img} alt={brand} />
+      <FavoriteButton
+        icon={<StyledFavoriteIcon />}
+        checkedIcon={<StyledFavoriteCheck />}
+        checked={isChecked}
+        onChange={handleToggleFavorite}
+      />
+      <Image src={data.img} alt={data.brand} />
 
       <CarContainer>
         <h3>
-          {brand}
-          <span> {model}</span>, {year}
+          {data.brand}
+          <span> {data.model}</span>, {data.year}
         </h3>
-        <span>{rentalPrice}</span>
+        <span>{data.rentalPrice}</span>
       </CarContainer>
 
       <CarTagsList>
-        <CarTags>{address.split(', ')[1]}</CarTags>
+        <CarTags>{data.address.split(', ')[1]}</CarTags>
         <Span></Span>
-        <CarTags>{address.split(', ')[2]}</CarTags>
+        <CarTags>{data.address.split(', ')[2]}</CarTags>
         <Span></Span>
-        <CarTags>{rentalCompany}</CarTags>
+        <CarTags>{data.rentalCompany}</CarTags>
         <Span></Span>
-        <CarTags>Premium {type}</CarTags>
+        <CarTags>Premium {data.type}</CarTags>
         <Span></Span>
-        <CarTags>{brand}</CarTags>
+        <CarTags>{data.brand}</CarTags>
         <Span></Span>
-        <CarTags>{id}</CarTags>
+        <CarTags>{data.id}</CarTags>
         <Span></Span>
-        <CarTags>{accessories[2]}</CarTags>
+        <CarTags>{data.accessories[2]}</CarTags>
       </CarTagsList>
 
       <Button onClick={handleOpen}>Learn more</Button>
 
-      {open && <BasicModal open={open} onClose={handleClose} data={advert} />}
+      {open && <BasicModal open={open} onClose={handleClose} data={data} />}
     </StyledLi>
   );
 };
-
-AdItem.propTypes = { advert: PropTypes.object.isRequired };
 
 export default AdItem;

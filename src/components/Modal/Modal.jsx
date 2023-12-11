@@ -2,7 +2,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { GrClose } from 'react-icons/gr';
 
-// import Button from 'components/Buttons/Buttons';
 import {
   Wrapper,
   CloseButton,
@@ -18,8 +17,8 @@ import {
   ConditionList,
   ConditionSpan,
   Button,
+  Image,
 } from './Modal.styled';
-// import CarImg from 'components/CarImg/CarImg';
 
 const style = {
   position: 'absolute',
@@ -59,7 +58,7 @@ export default function BasicModal({ open, onClose, data }) {
             <CloseButton onClick={onClose}>
               <GrClose style={{ width: '18px', height: '18px' }} />
             </CloseButton>
-            {/* <CarImg data={data} width="461" height="248" /> */}
+            <Image src={data.img} width="461" height="248" />
             <Wrap>
               <TextWrap>
                 <Title>
@@ -81,12 +80,12 @@ export default function BasicModal({ open, onClose, data }) {
               <Description>{data.description}</Description>
               <Info>Accessories and functionalities:</Info>
               <List>
-                {data.accessories.map(item => (
+                {data.accessories.map((item) => (
                   <Item key={item}>{item}</Item>
                 ))}
               </List>
               <List>
-                {data.functionalities.map(item => (
+                {data.functionalities.map((item) => (
                   <Item key={item}>{item}</Item>
                 ))}
               </List>
@@ -116,12 +115,12 @@ export default function BasicModal({ open, onClose, data }) {
               </ConditionList>
             </Wrap>
             <Button
-              text="Rental car"
-              width="168px"
               onClick={() => {
-                window.location.href = 'tel:+380730000000';
+              window.location.href = 'tel:+380730000000';
               }}
-            />
+            >
+              Rental car
+            </Button>
           </Wrapper>
         </Box>
       </Modal>

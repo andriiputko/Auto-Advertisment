@@ -1,4 +1,7 @@
 import styled from '@emotion/styled';
+import { ReactComponent as FavoriteIcon } from '../../images/normal.svg';
+import { ReactComponent as FavoriteCheck } from '../../images/active.svg';
+import Checkbox from '@mui/material/Checkbox';
 
 export const StyledLi = styled.li`
   display: flex;
@@ -10,7 +13,8 @@ export const StyledLi = styled.li`
 export const Image = styled.img`
   width: 274px;
   height: 274px;
-  background-size: contain;
+  display: block;
+  object-fit: cover;
   border-radius: 14px;
   margin-bottom: 14px;
 `;
@@ -68,10 +72,10 @@ export const Button = styled.button`
   }
 `;
 
-export const FavoriteButton = styled.button`
-    width: 18px;
-    height: 18px;
-    position: absolute;
+export const FavoriteButton = styled(Checkbox)`
+  width: 18px;
+  height: 18px;
+  position: absolute;
   top: 14px;
   right: 14px;
   display: flex;
@@ -86,18 +90,15 @@ export const FavoriteButton = styled.button`
   &:hover svg {
     scale: 1.2;
   }
-`
+`;
 
-export const FavoriteIcon = styled.svg`
-display: flex;
-  justify-content: center;
-  align-items: center;
-    width: 18px;
-    height: 18px;
-    stroke: ${(props) => {
-    return props.isFavorite ? "#3470FF" : "#fff";
-  }};
-  fill: ${(props) => {
-    return props.isFavorite ? "#3470FF" : "none";
-  }};
-`
+export const StyledFavoriteIcon = styled(FavoriteIcon)`
+  width: 18px;
+  height: 18px;
+  fill: none;
+  transition: 300ms;
+`;
+
+export const StyledFavoriteCheck = styled(FavoriteCheck)({
+  fill: '#FFFFFFCC',
+});

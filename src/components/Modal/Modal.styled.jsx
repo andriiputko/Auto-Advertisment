@@ -123,5 +123,24 @@ export const ConditionSpan = styled.span`
 `;
 
 export const Button = styled.button`
-    
-`
+  width: 168px;
+  height: 44px;
+  padding: 12px 50px;
+  background-color: #3470ff;
+  transition: 300ms;
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #ffffff;
+  border-radius: 12px;
+  border: none;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #0b44cd;
+    cursor: pointer;
+  }
+`;
