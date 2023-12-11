@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectFavorites } from '../../redux/selectors';
 import AdItem from '../../components/AdItem/AdItem';
-import { List } from './FavoritePage.styled';
-
+import { List } from '../FavoritePage/FavoritePage.styled'
 const FavoritePage = () => {
   const [catalog, setCatalog] = useState([]);
   const cars = useSelector(selectFavorites);
@@ -72,19 +71,22 @@ const FavoritePage = () => {
   const maxMileage = Math.max(...mileage);
 
   return (
-    <List>
-      {isFiltering ? (
-        filteredAdverts !== null && filteredAdverts.length > 0 ? (
-          filteredAdverts.map((car, index) => <AdItem key={index} data={car} />)
+ 
+      <List>
+        {isFiltering ? (
+          filteredAdverts !== null && filteredAdverts.length > 0 ? (
+            filteredAdverts.map((car, index) => (
+              <AdItem key={index} data={car} />
+            ))
+          ) : (
+            <div>No results found for the selected criteria.</div>
+          )
+        ) : catalog.length > 0 ? (
+          catalog.map((car, index) => <AdItem key={index} data={car} />)
         ) : (
-          <div>No results found for the selected criteria.</div>
-        )
-      ) : catalog.length > 0 ? (
-        catalog.map((car, index) => <AdItem key={index} data={car} />)
-      ) : (
-        <p>Favorite is empty.</p>
-      )}
-    </List>
+          <p>Favorite is empty.</p>
+        )}
+      </List>
   );
 };
 

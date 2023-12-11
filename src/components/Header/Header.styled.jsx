@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
+width: 100%;
   padding: 20px;
 `;
 
@@ -23,6 +24,6 @@ export const StyledLink = styled(Link)`
   &:hover,
   &:focus {
     color: #3470FF;
-
+  }
   
 `;

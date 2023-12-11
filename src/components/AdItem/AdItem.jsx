@@ -12,7 +12,6 @@ import {
   StyledLi,
   FavoriteButton,
 } from './AdItem.styled';
-import icons from '../../images/icons.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFavorites } from '../../redux/selectors';
 import { addFavorite, removeFavorite } from '../../redux/favoriteSlice';
@@ -54,9 +53,9 @@ const AdItem = ({ data }) => {
       </CarContainer>
 
       <CarTagsList>
-        <CarTags>{data.address.split(', ')[1]}</CarTags>
+        <CarTags>{data.address.split(',')[1]}</CarTags>
         <Span></Span>
-        <CarTags>{data.address.split(', ')[2]}</CarTags>
+        <CarTags>{data.address.split(',')[2]}</CarTags>
         <Span></Span>
         <CarTags>{data.rentalCompany}</CarTags>
         <Span></Span>

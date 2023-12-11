@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
   padding: 34px;
 `;
 
+
+
 export const CloseButton = styled.button`
   position: absolute;
   width: 24px;
@@ -31,7 +33,7 @@ export const IconX = styled.img`
 
 export const Image = styled.img`
   width: 100%;
-  height: 314px;
+  height: 248px;
   display: block;
   object-fit: cover;
   border-radius: 14px;

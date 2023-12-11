@@ -8,6 +8,7 @@ export const StyledLi = styled.li`
   position: relative;
   flex-direction: column;
   max-width: 273px;
+  height: 452px;
   justify-content: space-between;
 `;
 export const Image = styled.img`

@@ -1,9 +1,11 @@
-import { Container } from './HomePage.styled';
-
+import { Container, Image } from './HomePage.styled';
+import img from '../../images/mainImg.jpeg'
+import { Title } from '../HomePage/HomePage.styled';
 const HomePage = () => {
   return (
     <Container>
-      <h2>Home Page</h2>
+      <Title>Rent your favorite car</Title>
+      <Image src={img}/>
     </Container>
   );
 };

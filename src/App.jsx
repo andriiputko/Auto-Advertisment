@@ -10,8 +10,8 @@ function App() {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route path="/home" element={<HomePage />} />
-        <Route path="/ads" element={<AdsPage />} />
-        <Route path="/favorite" element={<FavoritePage />} />
+        <Route path="/catalog" element={<AdsPage />} />
+        <Route path="/favorites" element={<FavoritePage />} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>

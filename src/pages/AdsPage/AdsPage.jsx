@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import AutoSearch from '../../components/AutoSearch/AutoSearch';
-import { Container, Block, Section, AdList, Button } from './AdsPage.styled';
+import { Section, AdList, Button } from './AdsPage.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   useGetAdvertsQuery,
@@ -88,8 +88,7 @@ const AdsPage = () => {
   const minMileage = Math.min(...mileage);
   const maxMileage = Math.max(...mileage);
   return (
-    <Container>
-      <Block>
+    <>
         <AutoSearch
           prices={prices}
           minMileage={minMileage}
@@ -125,8 +124,7 @@ const AdsPage = () => {
             </Button>
           )}
         </Section>
-      </Block>
-    </Container>
+    </>
   );
 };
 

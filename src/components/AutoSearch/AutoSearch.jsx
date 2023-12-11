@@ -1,4 +1,4 @@
-import { Form, Label, SearchButton, StyledSelect } from './AutoSearch.styled';
+import { Container, Form, InputContainer, InputLeft, InputRight, Label, SearchButton, StyledSelect, UnitLeft, UnitRight } from './AutoSearch.styled';
 import Brands from './makes';
 import { useState } from 'react';
 
@@ -13,7 +13,7 @@ const AutoSearch = ({ prices, onFilterChange }) => {
 
   const priceRangeOptions = [];
 
-  for (let i = 10; i <= 300; i += 10) {
+  for (let i = 30; i <= 300; i += 10) {
     priceRangeOptions.push({ value: i, label: `${i}` });
   }
 
@@ -63,7 +63,7 @@ const AutoSearch = ({ prices, onFilterChange }) => {
   };
   return (
     <>
-      <Form>
+      <Container>
         <Label>
           Car brand
           <StyledSelect
@@ -135,7 +135,7 @@ const AutoSearch = ({ prices, onFilterChange }) => {
             styles={{
               control: (styles) => ({
                 ...styles,
-                width: '125',
+                width: '100',
                 height: '48px',
                 borderColor: 'rgba(18, 20, 23, 0.2)',
                 border: 'none',
@@ -178,13 +178,26 @@ const AutoSearch = ({ prices, onFilterChange }) => {
             }}
           ></StyledSelect>
         </Label>
-        <Label>
-          Сar mileage / km
-          <input type="range" min="0" max="100000" />
-        </Label>
-
-        <SearchButton onClick={handleFilterClick}>Search</SearchButton>
+        
+        <Form>
+        <Label>Car mileage / km</Label>
+        <InputContainer>
+          <InputLeft
+            type="text"
+            value={formatMileage(minValue)}
+            onChange={handleMinInputChange}
+          />
+          <UnitLeft>From</UnitLeft>
+          <InputRight
+            type="text"
+            value={formatMileage(maxValue)}
+            onChange={handleMaxInputChange}
+          />
+          <UnitRight>To</UnitRight>
+        </InputContainer>
       </Form>
+        <SearchButton onClick={handleFilterClick}>Search</SearchButton>
+      </Container>
     </>
   );
 };
