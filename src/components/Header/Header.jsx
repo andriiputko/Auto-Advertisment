@@ -13,10 +13,10 @@ export const Header = () => {
         <StyledLink to="/home">
           Home
         </StyledLink>
-        <StyledLink to="/ads">
+        <StyledLink to="/catalog">
           Ads
         </StyledLink>
-        <StyledLink to="/favorite">
+        <StyledLink to="/favorites">
           Favorite
         </StyledLink>
       </Navigation>
